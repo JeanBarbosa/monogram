@@ -23,7 +23,7 @@ export default StyleSheet.create({
       title: {
         color: '#fff',
         fontSize: 28.5,
-        fontFamily: 'dogbyte',
+        //fontFamily: 'dogbyte',
       },
   
       zoomWrapper: {
@@ -40,6 +40,6 @@ export default StyleSheet.create({
         fontSize: 16,
         color: '#fff',
         alignSelf: 'center',
-        fontFamily: 'dogbyte',
+        //fontFamily: 'dogbyte',
       },
 });

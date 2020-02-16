@@ -1,24 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import {Text, View, Dimensions, TouchableOpacity, TouchableHighlight } from 'react-native';
+import {
+  Text, 
+  View, 
+  Dimensions, 
+  TouchableOpacity, 
+  TouchableHighlight } from 'react-native';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
 
+import Palette from '../../components/Palette';
 import styles from './styles';
 
 export default function Grid() {
   
    const points = [
-    [ {color: '#fff', ref: null},  {color: '#fff', ref: null}],
-    [ {color: '#fff', ref: null},  {color: '#333', ref: null}]
+    [ {color: '#fff', ref: null},  {color: '#fff', ref: null}, {color: '#fff', ref: null},  {color: '#fff', ref: null}],
+    [ {color: '#fff', ref: null},  {color: '#333', ref: null}, {color: '#fff', ref: null},  {color: '#fff', ref: null}],
+    [ {color: '#fff', ref: null},  {color: '#fff', ref: null}, {color: '#fff', ref: null},  {color: '#fff', ref: null}],
+    [ {color: '#fff', ref: null},  {color: '#fff', ref: null}, {color: '#fff', ref: null},  {color: '#fff', ref: null}]
+
   ];
 
-   const { width } = Dimensions.get("window");
+  const [color, setColor] = useState('#333');
+  const colors = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5", "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50", "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800", "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
+
+  const { width } = Dimensions.get("window");
+
+  onSelect = color => setColor(color);
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Monogram</Text>
       </View>
-
+  
       <View style={styles.zoomWrapper}>
           <ReactNativeZoomableView
               zoomEnabled={true}
@@ -48,10 +62,16 @@ export default function Grid() {
                                    console.log(rowIndex, columnIndex)
                               
                                    val.ref.setNativeProps({
-                                    backgroundColor: '#333'
+                                    backgroundColor: color
                                   });
                                    
                                 }}
+
+                                onLongPress ={(e)=>{
+                                  alert(' onLongPress');
+                                  console.log(Date.now());
+                                  console.log(e.type); //undefined
+                               }}
                             />
                         ))}
                     </View>
@@ -59,9 +79,13 @@ export default function Grid() {
               </View>
 
               <Text style={styles.caption}> Jean, Barbosa (16 x 16)</Text>
-
           </ReactNativeZoomableView>
       </View>
+
+      <View>
+        <Palette colors={colors}  onSelect={onSelect} />
+      </View>
+
     </View>
   );
 }
