@@ -4,15 +4,14 @@ export default StyleSheet.create({
      //ZOOM
      container: {
         flex: 1,
-        //backgroundColor: '#e7e7e7',
         paddingBottom: 30,
-        backgroundColor: "#0a0a0a",
+        backgroundColor: '#fff' ,//"#0a0a0a",
         justifyContent: "center",
         alignItems: "center",
       },
       
       header: {
-        backgroundColor: '#0a0a0a',
+        backgroundColor: '#fff',
         paddingTop: 50,
         paddingBottom: 15,
         justifyContent: 'center',
@@ -21,7 +20,7 @@ export default StyleSheet.create({
       },
   
       title: {
-        color: '#fff',
+        color: '#0a0a0a',
         fontSize: 28.5,
         //fontFamily: 'dogbyte',
       },
@@ -33,12 +32,12 @@ export default StyleSheet.create({
   
       zoomableView: {
         padding: 10,
-        backgroundColor: "#0a0a0a",
+        backgroundColor: '#fff',
       },
      
       caption: {
         fontSize: 16,
-        color: '#fff',
+        color: '#0a0a0a',
         alignSelf: 'center',
         //fontFamily: 'dogbyte',
       },
