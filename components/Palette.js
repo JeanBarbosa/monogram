@@ -1,4 +1,4 @@
-import React, {useState, memo} from 'react';
+import React, {useState} from 'react';
 import { 
     Text,
     View,
@@ -16,10 +16,6 @@ function Palette(props) {
 
     //Adicionar uma cor a paleta
     //Remover uma cor da paleta
-    //Retorna a cor selecionada
-    //Exibi uma flat list com as cores do array
-
-    _keyExtractor = (item, index) => `${index}`;
 
     getContrastYIQ = hexcolor => {
         let r = parseInt(hexcolor.substring(1, 3), 16);
@@ -31,12 +27,16 @@ function Palette(props) {
     };
 
     return  (
-        <View>
+        <View style={styles.container}>
+            <View>
+              <Text>teste</Text>
+            </View>
              <FlatList
                 data={props.colors}
-                keyExtractor={_keyExtractor}
+                keyExtractor={(item, index) => `${index}`}
                 horizontal={true}
                 keyboardShouldPersistTaps="always"
+                showsHorizontalScrollIndicator={false}
                 style={{ maxHeight: 75 }}
                 renderItem={({ item }) => (
                     <TouchableOpacity
@@ -58,15 +58,22 @@ function Palette(props) {
 }
 
 const styles = StyleSheet.create({
-    circle: {
-      width: 50,
-      height: 50,
-      borderRadius: 50,
-      margin: 10,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
+  container: {
+    paddingHorizontal: 15,
+    flexDirection: 'row',
+  },
+
+  circle: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#999', 
+    borderWidth: 0.3,
+  },
   });
 
 
-export default memo(Palette);
+export default Palette;
